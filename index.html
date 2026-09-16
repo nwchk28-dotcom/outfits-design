@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="トップス、パンツ、シューズ、アウターの色を組み合わせて、服の配色を確かめられるシミュレーターです。"
+    />
+    <meta name="theme-color" content="#111111" />
+    <title>COLOR FIT — コーディネート配色シミュレーター</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="COLOR FIT ホーム">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>COLOR FIT</span>
+      </a>
+      <p>服の色を、着る前に。</p>
+    </header>
+
+    <main class="workspace">
+      <section class="look-panel" aria-labelledby="look-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">OUTFIT PREVIEW</p>
+            <h1 id="look-heading">配色を組み立てる</h1>
+          </div>
+          <label class="outer-switch">
+            <span class="switch-copy">
+              <span>アウター</span>
+              <small id="outer-state">なし</small>
+            </span>
+            <input id="outer-toggle" type="checkbox" role="switch" aria-describedby="outer-hint" />
+            <span class="switch-track" aria-hidden="true"><span></span></span>
+          </label>
+        </div>
+        <p id="outer-hint" class="intro">色を変えたい部分を選び、右のパレットから色を決めてください。</p>
+
+        <div class="outfit-stage">
+          <div class="outfit" id="outfit" aria-label="コーディネートのプレビュー">
+            <div class="upper-body">
+              <button class="garment garment--outer garment--outer-left" type="button" data-item="outer" aria-label="アウターの色を編集">
+                <span>d</span><small>OUTER</small>
+              </button>
+              <button class="garment garment--top" type="button" data-item="top" aria-label="トップスの色を編集">
+                <span>a</span><small>TOPS</small>
+              </button>
+              <button class="garment garment--outer garment--outer-right" type="button" data-item="outer" aria-label="アウターの色を編集">
+                <span>d</span><small>OUTER</small>
+              </button>
+            </div>
+            <button class="garment garment--pants" type="button" data-item="pants" aria-label="パンツの色を編集">
+              <span>b</span><small>PANTS</small>
+            </button>
+            <button class="garment garment--shoes" type="button" data-item="shoes" aria-label="シューズの色を編集">
+              <span>c</span><small>SHOES</small>
+            </button>
+          </div>
+        </div>
+
+        <div class="item-selector" role="group" aria-label="編集するアイテム">
+          <button type="button" class="item-chip is-active" data-select-item="top" aria-pressed="true">
+            <span class="chip-color" data-chip-color="top"></span>
+            <span><strong>トップス</strong><small>a</small></span>
+          </button>
+          <button type="button" class="item-chip" data-select-item="pants" aria-pressed="false">
+            <span class="chip-color" data-chip-color="pants"></span>
+            <span><strong>パンツ</strong><small>b</small></span>
+          </button>
+          <button type="button" class="item-chip" data-select-item="shoes" aria-pressed="false">
+            <span class="chip-color" data-chip-color="shoes"></span>
+            <span><strong>シューズ</strong><small>c</small></span>
+          </button>
+          <button type="button" class="item-chip" data-select-item="outer" aria-pressed="false">
+            <span class="chip-color" data-chip-color="outer"></span>
+            <span><strong>アウター</strong><small>d</small></span>
+          </button>
+        </div>
+      </section>
+
+      <aside class="color-panel" aria-labelledby="color-heading">
+        <div class="color-panel-header">
+          <div>
+            <p class="eyebrow">COLOR CONTROL</p>
+            <h2 id="color-heading"><span id="selected-item-name">トップス</span>の色</h2>
+          </div>
+          <div class="current-color" aria-label="現在の色">
+            <span id="current-color-swatch"></span>
+            <code id="hex-value">#F2EFE8</code>
+          </div>
+        </div>
+
+        <section class="color-section" aria-labelledby="basic-heading">
+          <div class="label-row">
+            <h3 id="basic-heading">ベーシック</h3>
+            <span>定番の12色</span>
+          </div>
+          <div class="swatch-grid basic-grid" id="basic-colors"></div>
+        </section>
+
+        <section class="color-section" aria-labelledby="grid-heading">
+          <div class="label-row">
+            <h3 id="grid-heading">カラーグリッド</h3>
+            <span>色合いから選ぶ</span>
+          </div>
+          <div class="swatch-grid hue-grid" id="color-grid"></div>
+        </section>
+
+        <section class="color-section spectrum-section" aria-labelledby="spectrum-heading">
+          <div class="label-row">
+            <h3 id="spectrum-heading">カラースペクトラム</h3>
+            <span>細かく調整</span>
+          </div>
+          <label class="spectrum-control">
+            <input id="spectrum-picker" type="color" value="#f2efe8" aria-label="カラースペクトラムから色を選ぶ" />
+            <span>スペクトラムを開く</span>
+            <span class="spectrum-icon" aria-hidden="true">＋</span>
+          </label>
+        </section>
+
+        <section class="color-section" aria-labelledby="rgb-heading">
+          <div class="label-row">
+            <h3 id="rgb-heading">RGB</h3>
+            <span>0–255</span>
+          </div>
+          <div class="rgb-fields">
+            <label>R<input id="rgb-r" type="number" min="0" max="255" inputmode="numeric" aria-label="赤の値" /></label>
+            <label>G<input id="rgb-g" type="number" min="0" max="255" inputmode="numeric" aria-label="緑の値" /></label>
+            <label>B<input id="rgb-b" type="number" min="0" max="255" inputmode="numeric" aria-label="青の値" /></label>
+          </div>
+        </section>
+
+        <section class="color-section eyedropper-section" aria-labelledby="eyedropper-heading">
+          <div class="label-row">
+            <h3 id="eyedropper-heading">画面から色を取る</h3>
+          </div>
+          <button id="eyedropper-button" class="eyedropper-button" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m19.35 2.65 2 2a2.12 2.12 0 0 1 0 3l-2.2 2.2-1.5-1.5-7.79 7.79-1.13 2.82-3.68 1.22-1.23-1.23 1.22-3.68 2.82-1.13 7.79-7.79-1.5-1.5 2.2-2.2a2.12 2.12 0 0 1 3 0Z"/><path d="m7.86 14.14 2 2"/></svg>
+            スポイトを使う
+          </button>
+          <p id="eyedropper-note" class="support-note" role="status" aria-live="polite"></p>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <span>COLOR FIT</span>
+      <p>気になる色を、自由に組み合わせてみましょう。</p>
+    </footer>
+  </body>
+</html>
