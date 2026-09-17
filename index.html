@@ -8,25 +8,25 @@
       content="トップス、パンツ、シューズ、アウターの色を組み合わせて、服の配色を確かめられるシミュレーターです。"
     />
     <meta name="theme-color" content="#111111" />
-    <title>COLOR FIT — コーディネート配色シミュレーター</title>
+    <title>配色帖 — コーディネート配色シミュレーター</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./app.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="./" aria-label="COLOR FIT ホーム">
+      <a class="brand" href="./" aria-label="配色帖 ホーム">
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>COLOR FIT</span>
+        <span>配色帖</span>
       </a>
-      <p>服の色を、着る前に。</p>
+      <p>created by Chika</p>
     </header>
 
     <main class="workspace">
       <section class="look-panel" aria-labelledby="look-heading">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">OUTFIT PREVIEW</p>
+            <p class="eyebrow">コーディネート</p>
             <h1 id="look-heading">配色を組み立てる</h1>
           </div>
           <label class="outer-switch">
@@ -44,20 +44,19 @@
           <div class="outfit" id="outfit" aria-label="コーディネートのプレビュー">
             <div class="upper-body">
               <button class="garment garment--outer garment--outer-left" type="button" data-item="outer" aria-label="アウターの色を編集">
-                <span>d</span><small>OUTER</small>
               </button>
               <button class="garment garment--top" type="button" data-item="top" aria-label="トップスの色を編集">
-                <span>a</span><small>TOPS</small>
               </button>
               <button class="garment garment--outer garment--outer-right" type="button" data-item="outer" aria-label="アウターの色を編集">
-                <span>d</span><small>OUTER</small>
               </button>
+              <svg class="neck-notch" viewBox="0 0 100 16" preserveAspectRatio="none" aria-hidden="true">
+                <path class="neck-notch-fill" d="M0 0 L50 16 L100 0 Z"></path>
+                <path class="neck-notch-line" d="M0 0 L50 16 L100 0"></path>
+              </svg>
             </div>
             <button class="garment garment--pants" type="button" data-item="pants" aria-label="パンツの色を編集">
-              <span>b</span><small>PANTS</small>
             </button>
             <button class="garment garment--shoes" type="button" data-item="shoes" aria-label="シューズの色を編集">
-              <span>c</span><small>SHOES</small>
             </button>
           </div>
         </div>
@@ -65,19 +64,19 @@
         <div class="item-selector" role="group" aria-label="編集するアイテム">
           <button type="button" class="item-chip is-active" data-select-item="top" aria-pressed="true">
             <span class="chip-color" data-chip-color="top"></span>
-            <span><strong>トップス</strong><small>a</small></span>
+            <span><strong>トップス</strong></span>
           </button>
           <button type="button" class="item-chip" data-select-item="pants" aria-pressed="false">
             <span class="chip-color" data-chip-color="pants"></span>
-            <span><strong>パンツ</strong><small>b</small></span>
+            <span><strong>パンツ</strong></span>
           </button>
           <button type="button" class="item-chip" data-select-item="shoes" aria-pressed="false">
             <span class="chip-color" data-chip-color="shoes"></span>
-            <span><strong>シューズ</strong><small>c</small></span>
+            <span><strong>シューズ</strong></span>
           </button>
           <button type="button" class="item-chip" data-select-item="outer" aria-pressed="false">
             <span class="chip-color" data-chip-color="outer"></span>
-            <span><strong>アウター</strong><small>d</small></span>
+            <span><strong>アウター</strong></span>
           </button>
         </div>
       </section>
@@ -85,7 +84,7 @@
       <aside class="color-panel" aria-labelledby="color-heading">
         <div class="color-panel-header">
           <div>
-            <p class="eyebrow">COLOR CONTROL</p>
+            <p class="eyebrow">色の設定</p>
             <h2 id="color-heading"><span id="selected-item-name">トップス</span>の色</h2>
           </div>
           <div class="current-color" aria-label="現在の色">
@@ -148,7 +147,7 @@
     </main>
 
     <footer>
-      <span>COLOR FIT</span>
+      <span>配色帖</span>
       <p>気になる色を、自由に組み合わせてみましょう。</p>
     </footer>
   </body>

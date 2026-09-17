@@ -109,10 +109,6 @@ function syncControls() {
     button.setAttribute("aria-pressed", String(active));
   });
 
-  document.querySelectorAll("[data-item]").forEach((button) => {
-    button.classList.toggle("is-selected", button.dataset.item === selectedItem);
-  });
-
   document.querySelectorAll(".color-swatch").forEach((button) => {
     const current = normalizeHex(button.dataset.color) === color;
     button.classList.toggle("is-current", current);
@@ -161,6 +157,16 @@ document.querySelectorAll("[data-select-item]").forEach((button) => {
 
 document.querySelectorAll("[data-item]").forEach((button) => {
   button.addEventListener("click", () => setSelectedItem(button.dataset.item));
+});
+
+const outerParts = document.querySelectorAll(".garment--outer");
+outerParts.forEach((part) => {
+  part.addEventListener("pointerenter", () => {
+    outerParts.forEach((outerPart) => outerPart.classList.add("is-group-hovered"));
+  });
+  part.addEventListener("pointerleave", () => {
+    outerParts.forEach((outerPart) => outerPart.classList.remove("is-group-hovered"));
+  });
 });
 
 outerToggle.addEventListener("change", () => {
